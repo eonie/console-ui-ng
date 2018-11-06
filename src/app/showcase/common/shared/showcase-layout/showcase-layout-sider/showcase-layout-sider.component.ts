@@ -16,10 +16,17 @@ export class ShowcaseLayoutSiderComponent implements OnInit {
       {title: 'Table 表格', routerLink: ['/showcase', 'data', 'data-table']},
       {title: 'Tree 树', routerLink: ['/showcase', 'data', 'tree']},
     ]},
+    {title: 'Forms', children: [
+      {title: 'UEditor 富文本编辑器', routerLink: ['/showcase', 'forms', 'ueditor']},
+      {title: 'CKEditor 富文本编辑器', routerLink: ['/showcase', 'forms', 'ckeditor']},
+      {title: 'FileUpload 文件上传', routerLink: ['/showcase', 'forms', 'fileupload']},
+      {title: 'Chips 碎片输入框', routerLink: ['/showcase', 'forms', 'chips']},
+      {title: 'Radio 单选框', routerLink: ['/showcase', 'forms', 'radio']},
+      {title: 'TreeSelect 树形选择框', routerLink: ['/showcase', 'forms', 'tree-select']},
+    ]},
     {title: 'Utils', children: [
       {title: 'Cropper 图片裁剪', routerLink: ['/showcase', 'cropper']},
-      {title: 'Editor 富文本编辑器', routerLink: ['/showcase', 'ueditor']},
-    ]}
+    ]},
   ];
 
   _navComps = [

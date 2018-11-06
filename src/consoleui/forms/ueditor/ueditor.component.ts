@@ -58,6 +58,7 @@ export class UeditorComponent implements AfterViewInit, OnDestroy, ControlValueA
             autoHeightEnabled: this.autoHeight,
             initialFrameHeight: this.initialFrameHeight,
             topOffset: this.topOffset,
+            elementPathEnabled: false,
         };
         if (this.toolbarMode === 'um') {
             // debugger;
@@ -114,11 +115,16 @@ export class UeditorComponent implements AfterViewInit, OnDestroy, ControlValueA
                 this.ueditor.setContent(this.value);
             }
             this.onReady.emit();
+
+            this.addEvent();
         });
-        ueditor.addListener('contentChange', () => {
-            this.updateValue(ueditor.getContent());
+    }
+
+    addEvent() {
+        this.ueditor.addListener('contentChange', () => {
+            this.updateValue(this.ueditor.getContent());
         });
-        ueditor.addListener('focus', () => {
+        this.ueditor.addListener('focus', () => {
             this.onFocus.emit();
         });
     }

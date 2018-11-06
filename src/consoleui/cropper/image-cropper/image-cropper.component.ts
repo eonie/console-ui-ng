@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, ViewChild, ElementRef, Output, EventEmitter, TemplateRef } from '@angular/core';
 import * as Cropper from "cropperjs";
 
 
@@ -39,11 +39,12 @@ export class ImageCropperComponent {
   @Output() export = new EventEmitter<IImageCropperResult>();
   @Output() ready = new EventEmitter();
   @Output() origin = new EventEmitter(); // Cropper object
+  @Input() contentTpl: TemplateRef<any>;
 
-  private cropper: Cropper;
-  private isLoading = true;
-  private imageElement: HTMLImageElement;
-  private loadError;
+  isLoading = true;
+  loadError;
+  cropper: Cropper;
+  imageElement: HTMLImageElement;
 
   constructor() { }
 

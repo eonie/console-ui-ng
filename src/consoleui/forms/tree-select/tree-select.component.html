@@ -7,9 +7,11 @@
         (blur)="onInputBlur($event)" (keydown)="onKeydown($event)" [disabled]="disabled" [attr.tabindex]="tabindex">
   </div>
 
-  <span [ngClass]="{'cui-dropdown-label':true,'cui-dropdown-label-empty':!label}">{{label||'empty'}}</span>
-  <div class="cui-dropdown-trigger dropdown-toggle">
-  </div>
+  <span *ngIf="!!value" [ngClass]="{'cui-dropdown-label':true,'cui-dropdown-label-empty':!label}">{{label||'empty'}}</span>
+  <span *ngIf="!value" class="cui-tree-select-selection__placeholder">{{placeholder || '请选择...'}}</span>
+  <!-- <div class="cui-dropdown-trigger dropdown-toggle"></div> -->
+  <div class="ant-select-arrow"></div>
+  <div *ngIf="allowClear && value" class="ant-select-selection__clear" (click)="clearValue()"></div>
 
   <div #panel [ngClass]="'cui-dropdown-panel hidden'" [style.display]="panelVisible ? 'block' : 'none'"
       [ngStyle]="panelStyle" [class]="panelStyleClass">
@@ -19,7 +21,7 @@
       <span class="fa fa-search"></span>
     </div>
     <div #itemswrapper class="cui-dropdown-items-wrapper" [style.max-height]="scrollHeight||'auto'" (click)="onItemClick()">
-        <cui-tree [config]="config" selectionMode="single" (selectionChange)="onSelectionChange($event)"></cui-tree>
+        <cui-tree #tree [config]="config" selectionMode="single" (selectionChange)="onSelectionChange($event)"></cui-tree>
     </div>
   </div>
 

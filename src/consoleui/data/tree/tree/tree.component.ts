@@ -1,11 +1,11 @@
 import {
   Component, OnInit, AfterContentInit, OnDestroy, Input, Output,
-  EventEmitter, ContentChildren, QueryList, OnChanges
+  EventEmitter, ContentChildren, QueryList, OnChanges, TemplateRef, ContentChild
 } from '@angular/core';
 import { CuiTreeNode, CuiTreeConfig, defaultTreeConfig } from '../defs';
 import { CuiTemplateDirective } from '../../../core/template/template.directive';
 import { TreeModel } from '../model/tree-model';
-// import { DoCheck, IterableDiffer, IterableDiffers } from '@angular/core';
+// import { DoCheck, IterableDiffer, IterableDiffers, ContentChild } from '@angular/core';
 
 @Component({
   selector: 'cui-tree',
@@ -33,6 +33,7 @@ export class TreeComponent implements OnInit, AfterContentInit, OnChanges, OnDes
   @Output() nodeCollapse: EventEmitter<any> = new EventEmitter();
 
   @ContentChildren(CuiTemplateDirective) templates: QueryList<any>;
+  @ContentChild("nodeTemplate") nodeTemplate: TemplateRef<any>;
 
   nodes: CuiTreeNode[];
   nodeTouched: boolean;
@@ -44,7 +45,7 @@ export class TreeComponent implements OnInit, AfterContentInit, OnChanges, OnDes
   }
 
   @Input() set value(value: any) { }
-  @Input() set config(config: CuiTreeConfig) {}
+  @Input() set config(config: CuiTreeConfig) { }
 
   get config(): CuiTreeConfig {
     return this.treeModel.config;
@@ -85,7 +86,13 @@ export class TreeComponent implements OnInit, AfterContentInit, OnChanges, OnDes
     this.treeModel.setData({
       nodes: changes.value && changes.value.currentValue,
       config: changes.config && changes.config.currentValue,
-      events: {'selectionChange': this.selectionChange}
+      events: {
+        'selectionChange': this.selectionChange,
+        'nodeSelect': this.nodeSelect,
+        'nodeUnselect': this.nodeUnselect,
+        'nodeExpand': this.nodeExpand,
+        'nodeCollapse': this.nodeCollapse,
+      }
     });
     // console.log('changes', changes)
     // console.log('treeModel', this.treeModel);
@@ -216,7 +223,7 @@ export class TreeComponent implements OnInit, AfterContentInit, OnChanges, OnDes
     let index: number = -1;
 
     if (this.selectionMode && this.selection) {
-      index = this.selection.findIndex((n, i) => n == node);
+      index = this.selection.findIndex((n, i) => n == node || n.id == node.id);
     }
 
     return index;
@@ -224,58 +231,58 @@ export class TreeComponent implements OnInit, AfterContentInit, OnChanges, OnDes
 
   propagateUp(node: CuiTreeNode, select: boolean) {
     if (node.children && node.children.length) {
-            let selectedCount: number = 0;
-            let childPartialSelected: boolean = false;
-            for (let child of node.children) {
-                if (this.isSelected(child)) {
-                    selectedCount++;
-                } else if (child.partialSelected) {
-                    childPartialSelected = true;
-                }
-            }
-
-            if (select && selectedCount == node.children.length) {
-                this.selection = [...this.selection || [], node];
-                node.partialSelected = false;
-            } else {
-                if (!select) {
-                    let index = this.findIndexInSelection(node);
-                    if (index >= 0) {
-                        this.selection = this.selection.filter((val, i) => i != index);
-                    }
-                }
-
-                if (childPartialSelected || selectedCount > 0 && selectedCount != node.children.length) {
-                    node.partialSelected = true;
-                } else {
-                    node.partialSelected = false;
-                }
-            }
+      let selectedCount: number = 0;
+      let childPartialSelected: boolean = false;
+      for (let child of node.children) {
+        if (this.isSelected(child)) {
+          selectedCount++;
+        } else if (child.partialSelected) {
+          childPartialSelected = true;
         }
+      }
 
-        let parent = node.parent;
-        if (parent) {
-            this.propagateUp(parent, select);
-        }
-    }
-
-    propagateDown(node: CuiTreeNode, select: boolean) {
-        let index = this.findIndexInSelection(node);
-
-        if (select && index == -1) {
-            this.selection = [...this.selection || [], node];
-        } else if (!select && index > -1) {
-            this.selection = this.selection.filter((val, i) => i != index);
-        }
-
+      if (select && selectedCount == node.children.length) {
+        this.selection = [...this.selection || [], node];
         node.partialSelected = false;
-
-        if (node.children && node.children.length) {
-            for (let child of node.children) {
-                this.propagateDown(child, select);
-            }
+      } else {
+        if (!select) {
+          let index = this.findIndexInSelection(node);
+          if (index >= 0) {
+            this.selection = this.selection.filter((val, i) => i != index);
+          }
         }
+
+        if (childPartialSelected || selectedCount > 0 && selectedCount != node.children.length) {
+          node.partialSelected = true;
+        } else {
+          node.partialSelected = false;
+        }
+      }
     }
+
+    let parent = node.parent;
+    if (parent) {
+      this.propagateUp(parent, select);
+    }
+  }
+
+  propagateDown(node: CuiTreeNode, select: boolean) {
+    let index = this.findIndexInSelection(node);
+
+    if (select && index == -1) {
+      this.selection = [...this.selection || [], node];
+    } else if (!select && index > -1) {
+      this.selection = this.selection.filter((val, i) => i != index);
+    }
+
+    node.partialSelected = false;
+
+    if (node.children && node.children.length) {
+      for (let child of node.children) {
+        this.propagateDown(child, select);
+      }
+    }
+  }
 
   isSelected(node: CuiTreeNode) {
     return this.findIndexInSelection(node) != -1;
@@ -283,6 +290,58 @@ export class TreeComponent implements OnInit, AfterContentInit, OnChanges, OnDes
 
   getTemplateForNode() {
 
+  }
+
+  getNodeByParam(key: string, value: any, parentNode?: CuiTreeNode): CuiTreeNode {
+    let results = this.treeModel.filter(node => {
+      return node[key] == value || node.data[key] == value;
+    }, parentNode);
+
+    if (results && results.length > 0) {
+      return results[0];
+    }
+
+    return null;
+  }
+
+  getNodeById(id: any): CuiTreeNode {
+    return this.getNodeByParam('id', id);
+  }
+
+  selectNode(node: CuiTreeNode) {
+    this.treeModel.addSelection(node);
+  }
+
+  removeSelection(node: CuiTreeNode) {
+    this.treeModel.removeSelection(node);
+  }
+
+  refresh(node?: CuiTreeNode, mode: 'rate' | 'children' = 'rate') {
+    switch (mode) {
+      case 'children':
+        this.refreshChildren(node);
+        break;
+      case 'rate':
+      default:
+        this.refreshRate(node);
+        break;
+    }
+  }
+
+  refreshRate(node: CuiTreeNode) {
+    let parent = node && node.parent;
+    this.refreshChildren(parent);
+  }
+
+  refreshChildren(node: CuiTreeNode) {
+    node = node || this.treeModel.virtualRoot;
+    if (node) {
+      if (!node.hasChildren) {
+        node.hasChildren = true;
+        node.expanded = true;
+      }
+      node.loadChildren(true);
+    }
   }
 
 }

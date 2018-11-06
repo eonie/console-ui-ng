@@ -1,6 +1,9 @@
+import { TreeComponent } from './../../data/tree/tree/tree.component';
 import { DomHandler } from './../../core/dom/dom-handler';
-import { Component, OnInit, Input, Output, EventEmitter, forwardRef, Renderer2,
-  ChangeDetectorRef, ElementRef, ViewChild, AfterViewInit, AfterViewChecked, OnDestroy } from '@angular/core';
+import {
+  Component, OnInit, Input, Output, EventEmitter, forwardRef, Renderer2,
+  ChangeDetectorRef, ElementRef, ViewChild, AfterViewInit, AfterViewChecked, OnDestroy
+} from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { TreeNode } from '../../data/tree/model/tree-node';
 import { CuiTreeConfig } from '../../data/tree';
@@ -37,6 +40,7 @@ export class TreeSelectComponent implements OnInit, AfterViewInit, AfterViewChec
   @Input() inputId: string;
   @Input() dataKey: string;
   @Input() filterBy: string = 'label';
+  @Input() allowClear: boolean;
 
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Output() onFocus: EventEmitter<any> = new EventEmitter();
@@ -47,6 +51,7 @@ export class TreeSelectComponent implements OnInit, AfterViewInit, AfterViewChec
   @ViewChild('itemswrapper') itemsWrapperViewChild: ElementRef;
   @ViewChild('filter') filterViewChild: ElementRef;
   @ViewChild('in') focusViewChild: ElementRef;
+  @ViewChild('tree') tree: TreeComponent;
 
   value: any;
   hover: boolean;
@@ -66,7 +71,7 @@ export class TreeSelectComponent implements OnInit, AfterViewInit, AfterViewChec
   public selectedOptionUpdated: boolean;
   public filterValue: string;
 
-
+  isClearClick: boolean = false;
 
   defaultOptions;
   open = false;
@@ -205,6 +210,11 @@ export class TreeSelectComponent implements OnInit, AfterViewInit, AfterViewChec
 
     this.selfClick = true;
 
+    if (this.isClearClick) {
+      this.isClearClick = false;
+      return;
+    }
+
     if (!this.itemClick) {
       this.focusViewChild.nativeElement.focus();
 
@@ -306,6 +316,20 @@ export class TreeSelectComponent implements OnInit, AfterViewInit, AfterViewChec
 
     if (this.appendTo) {
       this.el.nativeElement.appendChild(this.panel);
+    }
+  }
+
+  clearValue() {
+    this.isClearClick = true;
+    if (this.tree) {
+      this.tree.selection = [];
+      this.value = undefined;
+
+      this.onModelChange(this.value);
+
+      this.hide();
+
+      this.change.emit(this.value);
     }
   }
 }
