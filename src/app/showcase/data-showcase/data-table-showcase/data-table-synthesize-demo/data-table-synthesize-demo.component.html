@@ -94,15 +94,15 @@
     <span nz-table-divider></span>
     <a class="text-danger">删除</a>
     <span nz-table-divider></span>
-    <nz-dropdown [nzPlacement]="'bottomRight'">
-        <a class="ant-dropdown-link" nz-dropdown>
-          更多 <i  nz-icon class=" anticon-down"></i>
-      </a>
+    <a class="ant-dropdown-link" nz-dropdown [nzDropdownMenu]="moreMenu">
+        更多 <i nz-icon nzType="down"></i>
+    </a>
+    <nz-dropdown-menu #moreMenu="nzDropdownMenu">
         <ul nz-menu>
             <li nz-menu-item><a>复制</a></li>
             <li nz-menu-item><a>修改</a></li>
         </ul>
-    </nz-dropdown>
+    </nz-dropdown-menu>
 </ng-template>
 
 <ng-template #simpleSearchBox>

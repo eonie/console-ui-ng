@@ -55,7 +55,7 @@ export class FileuploadComponent implements OnInit, OnChanges {
     @Output() error = new EventEmitter();
 
     @ViewChildren(FileSelectDirective) fileSelectors: QueryList<FileSelectDirective>;
-    @ViewChild('file') file: ElementRef;
+    @ViewChild('file', { static: false }) file: ElementRef;
 
     public uploader: FileUploader; // = new FileUploader({url: URL});
     public results: any[];

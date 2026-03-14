@@ -46,12 +46,12 @@ export class TreeSelectComponent implements OnInit, AfterViewInit, AfterViewChec
   @Output() onFocus: EventEmitter<any> = new EventEmitter();
   @Output() onBlur: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild('container') containerViewChild: ElementRef;
-  @ViewChild('panel') panelViewChild: ElementRef;
-  @ViewChild('itemswrapper') itemsWrapperViewChild: ElementRef;
-  @ViewChild('filter') filterViewChild: ElementRef;
-  @ViewChild('in') focusViewChild: ElementRef;
-  @ViewChild('tree') tree: TreeComponent;
+  @ViewChild('container', { static: true }) containerViewChild: ElementRef;
+  @ViewChild('panel', { static: true }) panelViewChild: ElementRef;
+  @ViewChild('itemswrapper', { static: true }) itemsWrapperViewChild: ElementRef;
+  @ViewChild('filter', { static: false }) filterViewChild: ElementRef;
+  @ViewChild('in', { static: true }) focusViewChild: ElementRef;
+  @ViewChild('tree', { static: true }) tree: TreeComponent;
 
   value: any;
   hover: boolean;

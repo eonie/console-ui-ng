@@ -39,7 +39,7 @@ export class RadioComponent implements ControlValueAccessor, AfterViewInit {
 
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild('rb') inputViewChild: ElementRef;
+  @ViewChild('rb', { static: true }) inputViewChild: ElementRef;
 
   public input: HTMLInputElement;
 

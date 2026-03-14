@@ -5,21 +5,21 @@
     <span nz-table-divider></span>
     <a href="#" class="text-danger">删除</a>
     <span nz-table-divider></span>
-    <nz-dropdown>
-        <a class="ant-dropdown-link" nz-dropdown>
-          更多 <i  nz-icon nz-type="down" class=" anticon-down"></i>
-        </a>
-        <ul nz-menu>
-          <li nz-menu-item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
-          </li>
-          <li nz-menu-item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">2nd menu item</a>
-          </li>
-          <li nz-menu-item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">3rd menu item</a>
-          </li>
-        </ul>
-    </nz-dropdown>
+    <a class="ant-dropdown-link" nz-dropdown [nzDropdownMenu]="moreMenu">
+      更多 <i nz-icon nzType="down"></i>
+    </a>
+    <nz-dropdown-menu #moreMenu="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item>
+          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
+        </li>
+        <li nz-menu-item>
+          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">2nd menu item</a>
+        </li>
+        <li nz-menu-item>
+          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">3rd menu item</a>
+        </li>
+      </ul>
+    </nz-dropdown-menu>
   </ng-template>
 </cui-data-table>

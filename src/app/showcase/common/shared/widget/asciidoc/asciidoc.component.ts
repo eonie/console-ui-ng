@@ -18,6 +18,10 @@ export class AsciidocComponent implements OnInit, AfterViewInit {
   _el: HTMLElement;
 
   @Input() set content(value) {
+    if (value == null || typeof value !== 'string') {
+      this._parsedHTML = '';
+      return;
+    }
     this._parsedHTML = this.parseContent(value);
   }
 

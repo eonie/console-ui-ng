@@ -7,11 +7,11 @@ const routes: Routes = [
         path: '', children: [
             {
                 path: 'data-table',
-                loadChildren: 'app/showcase/data-showcase/data-table-showcase/data-table-showcase.module#DataTableShowcaseModule'
+                loadChildren: () => import('app/showcase/data-showcase/data-table-showcase/data-table-showcase.module').then(m => m.DataTableShowcaseModule)
             },
             {
                 path: 'tree',
-                loadChildren: 'app/showcase/data-showcase/tree-showcase/tree-showcase.module#TreeShowcaseModule'
+                loadChildren: () => import('app/showcase/data-showcase/tree-showcase/tree-showcase.module').then(m => m.TreeShowcaseModule)
             },
         ]
     }

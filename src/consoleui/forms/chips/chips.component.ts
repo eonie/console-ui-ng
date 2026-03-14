@@ -37,7 +37,7 @@ export class ChipsComponent implements AfterContentInit, ControlValueAccessor {
 
   // @ContentChildren(CuiTemplateDirective) templates: QueryList<any>;
 
-  @ContentChild('itemTemplate')
+  @ContentChild('itemTemplate', {static: false})
   public itemTemplate: TemplateRef<any>;
 
   value: any;

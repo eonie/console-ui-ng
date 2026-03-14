@@ -23,7 +23,7 @@ export class PaginationComponent implements OnInit, OnChanges {
     {value: 1000, label: '1000 / 页'},
   ];
 
-  @ContentChild('paginationTemplate') paginationTemplate: TemplateRef<any>;
+  @ContentChild('paginationTemplate', {static: false}) paginationTemplate: TemplateRef<any>;
 
   constructor() { }
 

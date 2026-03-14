@@ -11,7 +11,7 @@ export class TreeSingleSelectDemoComponent implements OnInit {
 
   nodes: CuiTreeNode[];
 
-  @ViewChild('tree') tree: TreeComponent;
+  @ViewChild('tree', { static: true }) tree: TreeComponent;
 
   constructor(private treeDataApi: TreeDataApiMockService) { }
 

@@ -13,7 +13,7 @@ export class SidenavItemComponent implements OnInit {
 
   @Output() expanded: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild(MenuSubComponent) submenu: MenuSubComponent;
+  @ViewChild(MenuSubComponent, { static: false }) submenu: MenuSubComponent;
 
 
   constructor() { }

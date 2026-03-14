@@ -39,13 +39,13 @@ export class DataTableComponent implements OnInit, AfterContentInit, OnChanges {
   @Input() rowId: string = 'id';
   @Input() sortFromFirst = true;
 
-  @ContentChild('rowActions') rowActions: TemplateRef<any>;
+  @ContentChild('rowActions', {static: false}) rowActions: TemplateRef<any>;
   @ContentChildren(ColTplDirective) _colTpls: QueryList<ColTplDirective>;
 
-  @ContentChild('complexSearch') complexSearch: TemplateRef<any>;
-  @ContentChild('simpleSearch') simpleSearch: TemplateRef<any>;
-  @ContentChild('listTools') listTools: TemplateRef<any>;
-  @ContentChild('actionGroup') actionGroup: TemplateRef<any>;
+  @ContentChild('complexSearch', {static: false}) complexSearch: TemplateRef<any>;
+  @ContentChild('simpleSearch', {static: false}) simpleSearch: TemplateRef<any>;
+  @ContentChild('listTools', {static: false}) listTools: TemplateRef<any>;
+  @ContentChild('actionGroup', {static: false}) actionGroup: TemplateRef<any>;
 
   columnsVisible: Column[];
 

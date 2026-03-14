@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
@@ -7,6 +7,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ServiceNameService {
 
-    constructor(private http: Http) { }
-    
+    constructor(private http: HttpClient) { }
+
 }

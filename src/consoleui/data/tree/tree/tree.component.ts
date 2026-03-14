@@ -33,7 +33,7 @@ export class TreeComponent implements OnInit, AfterContentInit, OnChanges, OnDes
   @Output() nodeCollapse: EventEmitter<any> = new EventEmitter();
 
   @ContentChildren(CuiTemplateDirective) templates: QueryList<any>;
-  @ContentChild("nodeTemplate") nodeTemplate: TemplateRef<any>;
+  @ContentChild("nodeTemplate", {static: false}) nodeTemplate: TemplateRef<any>;
 
   nodes: CuiTreeNode[];
   nodeTouched: boolean;

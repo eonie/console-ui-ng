@@ -35,7 +35,7 @@ export class ImageCropperComponent {
   @Input() settings: IImageCropperSetting;
   @Input() cropbox: Cropper.CropBoxData;
   @Input() cropperOptions: Cropper.CropperOptions;
-  @ViewChild('image') image: ElementRef;
+  @ViewChild('image', { static: true }) image: ElementRef;
   @Output() export = new EventEmitter<IImageCropperResult>();
   @Output() ready = new EventEmitter();
   @Output() origin = new EventEmitter(); // Cropper object

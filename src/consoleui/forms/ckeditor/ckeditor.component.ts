@@ -51,7 +51,7 @@ export class CKEditorComponent implements OnChanges, AfterViewInit, OnDestroy, A
     @Output() contentDom = new EventEmitter();
     @Output() fileUploadRequest = new EventEmitter();
 
-    @ViewChild('host') host: any;
+    @ViewChild('host', { static: true }) host: any;
 
     @ContentChildren(CKButtonDirective) toolbarButtons: QueryList<CKButtonDirective>;
     @ContentChildren(CKGroupDirective) toolbarGroups: QueryList<CKGroupDirective>;

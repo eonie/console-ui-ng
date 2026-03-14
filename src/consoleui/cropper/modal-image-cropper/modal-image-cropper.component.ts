@@ -1,4 +1,4 @@
-import { Http, RequestOptions, Headers, Response } from '@angular/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, Input, Output } from '@angular/core';
 import * as Cropper from 'cropperjs';
 import { NzModalService } from 'ng-zorro-antd';
@@ -26,7 +26,7 @@ export class ModalImageCropperComponent {
     @Output() result: any;
     currentModal;
 
-    constructor(private modalService: NzModalService, private http: Http) { }
+    constructor(private modalService: NzModalService, private http: HttpClient) { }
 
     showModalForTemplate(contentTpl, footerTpl) {
         this.currentModal = this.modalService.create({
@@ -51,9 +51,9 @@ export class ModalImageCropperComponent {
                 let formData = new FormData();
                 formData.append(this.uploadParamName, blob, 'croped.png');
                 this.http.post(this.uploadUrl, formData)
-                .subscribe((r: Response) => {
+                .subscribe((r: any) => {
                     console.log(r);
-                    this.result = r.json()[this.property];
+                    this.result = r[this.property];
                     console.log(this.result);
                 });
               });

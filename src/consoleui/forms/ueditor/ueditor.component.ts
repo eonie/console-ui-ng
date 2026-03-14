@@ -41,7 +41,7 @@ export class UeditorComponent implements AfterViewInit, OnDestroy, ControlValueA
     @Output() onValueChange = new EventEmitter();
     @Output() onFocus = new EventEmitter();
 
-    @ViewChild('host') host;
+    @ViewChild('host', { static: true }) host;
 
     onChange: Function = () => { };
     onTouched: Function = () => { };

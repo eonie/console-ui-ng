@@ -8,7 +8,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class UeditorCustomDemoComponent implements OnInit {
 
-  @ViewChild(UeditorComponent) ueditor: UeditorComponent;
+  @ViewChild(UeditorComponent, { static: true }) ueditor: UeditorComponent;
   constructor() { }
 
   ngOnInit() {

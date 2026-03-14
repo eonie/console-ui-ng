@@ -149,9 +149,9 @@ export class CalendarComponent implements AfterViewInit, AfterViewChecked, OnIni
 
   @Input() tabindex: number;
 
-  @ViewChild('datepicker') overlayViewChild: ElementRef;
+  @ViewChild('datepicker', { static: true }) overlayViewChild: ElementRef;
 
-  @ViewChild('inputfield') inputfieldViewChild: ElementRef;
+  @ViewChild('inputfield', { static: false }) inputfieldViewChild: ElementRef;
 
   value: Date;
 

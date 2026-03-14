@@ -15,8 +15,8 @@ export class GrowlComponent implements OnInit, AfterViewInit {
   @Output() valueChange: EventEmitter<Message[]> = new EventEmitter<Message[]>();
 
 
-  @ViewChild("growlContainer", { read: ViewContainerRef }) growlContainer: ViewContainerRef;
-  @ViewChild("growlItemTemplate", { read: TemplateRef }) growlItemTemplate: TemplateRef<any>;
+  @ViewChild("growlContainer", { read: ViewContainerRef, static: true }) growlContainer: ViewContainerRef;
+  @ViewChild("growlItemTemplate", { read: TemplateRef, static: true }) growlItemTemplate: TemplateRef<any>;
 
   _value: Message[];
 

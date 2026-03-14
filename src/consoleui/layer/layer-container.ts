@@ -9,7 +9,7 @@ import { PortalHostDirective } from '../core/portal/portal-directives';
 export class LayerContainerComponent extends BasePortalHost {
     @HostBinding('class') hostClass = 'cui-layer-container';
 
-  @ViewChild(PortalHostDirective) portalHost: PortalHostDirective;
+  @ViewChild(PortalHostDirective, {static: false}) portalHost: PortalHostDirective;
 
   constructor() {
     super()

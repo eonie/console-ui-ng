@@ -61,13 +61,13 @@ ant-pagination-next -->
   </li>
 </ul> -->
 <span>共 {{pagination.totalElements}} 条记录，</span>
-<button nz-button [nzType]="'default'" (click)="first()" [disabled]="pagination.first"><i nz-icon type="double-left"></i></button>
-<button nz-button [nzType]="'default'" (click)="prev()" [disabled]="pagination.first"><i nz-icon type="left"></i></button>
+<button nz-button [nzType]="'default'" (click)="first()" [disabled]="pagination.first"><i nz-icon nzType="double-left"></i></button>
+<button nz-button [nzType]="'default'" (click)="prev()" [disabled]="pagination.first"><i nz-icon nzType="left"></i></button>
 <input nz-input #totalPages [(ngModel)]="totalPagesNumber" name="totalPagesNumber" id="pageNumberInput" (keydown)="gotoTotalPages($event, totalPagesNumber)" />
 <span>/</span>
 <span>{{pagination.totalPages}}</span>
-<button nz-button [nzType]="'default'" (click)="next()" [disabled]="pagination.last"><i nz-icon type="right"></i></button>
-<button nz-button [nzType]="'default'" (click)="last()" [disabled]="pagination.last"><i nz-icon type="double-right"></i></button>
+<button nz-button [nzType]="'default'" (click)="next()" [disabled]="pagination.last"><i nz-icon nzType="right"></i></button>
+<button nz-button [nzType]="'default'" (click)="last()" [disabled]="pagination.last"><i nz-icon nzType="double-right"></i></button>
 <nz-select #pageSize name="pageSize" [(ngModel)]="pagination.size" (ngModelChange)="first()">
   <nz-option
     *ngFor="let option of PER_PAGE_SIZES"

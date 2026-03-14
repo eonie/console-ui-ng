@@ -10,7 +10,7 @@ import * as HighLight from 'highlight.js';
 export class HighlightComponent implements OnInit, AfterViewInit {
   _code;
 
-  @ViewChild('code') codeElement: ElementRef;
+  @ViewChild('code', { static: true }) codeElement: ElementRef;
   @Input() language: string;
 
   @Input() set code(value) {
