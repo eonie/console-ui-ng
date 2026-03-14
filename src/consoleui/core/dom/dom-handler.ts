@@ -226,12 +226,8 @@ export class DomHandler {
         return (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
     }
 
-    public matches(element, selector: string): boolean {
-        var p = Element.prototype;
-        var f = p['matches'] || p.webkitMatchesSelector || p['mozMatchesSelector'] || p.msMatchesSelector || function (s) {
-            return [].indexOf.call(document.querySelectorAll(s), this) !== -1;
-        };
-        return f.call(element, selector);
+    public matches(element: Element, selector: string): boolean {
+        return element.matches(selector);
     }
 
     public getOuterWidth(el, margin?) {

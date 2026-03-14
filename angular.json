@@ -65,11 +65,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "console-ui-ng-showcase:build"
+            "browserTarget": "showcase:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "console-ui-ng-showcase:build:production"
+              "browserTarget": "showcase:build:production"
             }
           }
         }
