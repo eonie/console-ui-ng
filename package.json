@@ -47,7 +47,7 @@
     "jquery": "^1.12.4",
     "marked": "^0.3.6",
     "mockjs": "^1.0.1-beta3",
-    "ng-zorro-antd": "~9.3.0",
+    "ng-zorro-antd": "~10.2.0",
     "object-path": "^0.11.4",
     "popper.js": "^1.12.6",
     "rxjs": "~6.5.3",
