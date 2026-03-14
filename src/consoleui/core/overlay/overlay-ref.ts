@@ -73,7 +73,7 @@ export class OverlayRef implements PortalHost {
     updatePostion() {
         // TODO: move to config
         if (!this.positionStrategy) {
-            this.positionStrategy = new GlobalPostionStrategy()
+            this.positionStrategy = new GlobalPostionStrategy();
         }
         this.positionStrategy.apply(this.pane);
     }

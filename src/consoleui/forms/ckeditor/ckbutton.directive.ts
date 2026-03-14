@@ -37,7 +37,7 @@ export class CKButtonDirective implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.name) throw new Error('Attribute "name" is required on <ckbutton>');
-    if (!this.command) throw new Error('Attribute "command" is required on <ckbutton>');
+    if (!this.name) { throw new Error('Attribute "name" is required on <ckbutton>'); }
+    if (!this.command) { throw new Error('Attribute "command" is required on <ckbutton>'); }
   }
 }

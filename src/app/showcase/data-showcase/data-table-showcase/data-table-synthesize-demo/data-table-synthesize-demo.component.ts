@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 class Pagination<T> implements CuiPagination {
   first: boolean;

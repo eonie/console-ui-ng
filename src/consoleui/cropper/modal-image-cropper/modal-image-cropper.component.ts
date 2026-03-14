@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, Input, Output } from '@angular/core';
 import * as Cropper from 'cropperjs';
-import { NzModalService } from 'ng-zorro-antd';
+import { NzModalService } from 'ng-zorro-antd/modal';
 @Component({
     selector: 'cui-modal-cropper',
     templateUrl: './modal-image-cropper.component.html',

@@ -48,7 +48,7 @@ export class EqualValidatorDirective implements Validator {
                     e.setErrors(null);
                 }
             } else {
-                e.setErrors({validateEqual: v})
+                e.setErrors({validateEqual: v});
             }
         } else {
             if (e.value && e.value.length > 0) {

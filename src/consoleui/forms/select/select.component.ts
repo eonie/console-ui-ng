@@ -231,7 +231,7 @@ export class SelectComponent implements OnInit, AfterViewInit, AfterContentInit,
   updateDimensions() {
     if (this.autoWidth) {
       let select = this.domHandler.findSingle(this.el.nativeElement, 'select');
-      console.log(select, select.offsetWidth)
+      console.log(select, select.offsetWidth);
       if (!this.style || (!this.style['width'] && !this.style['min-width'])) {
         this.el.nativeElement.children[0].style.width = select.offsetWidth + 30 + 'px';
       }

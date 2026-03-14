@@ -12,7 +12,7 @@ export class LayerContainerComponent extends BasePortalHost {
   @ViewChild(PortalHostDirective, {static: false}) portalHost: PortalHostDirective;
 
   constructor() {
-    super()
+    super();
   }
 
   attachTemplatePortal(portal: TemplatePortal): Map<string, any> {

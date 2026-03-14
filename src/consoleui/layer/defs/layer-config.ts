@@ -15,5 +15,5 @@ export class CuiLayerComponent {
         if (this.layerRef) {
             this.layerRef.close();
         }
-    };
+    }
 }

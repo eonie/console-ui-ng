@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from './../../common/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { DataTableShowcaseComponent } from './data-table-showcase.component';
 import { DataTableSimpleDemoComponent } from './data-table-simple-demo/data-table-simple-demo.component';
 import { DataTableSelectionDemoComponent } from './data-table-selection-demo/data-table-selection-demo.component';
@@ -13,6 +16,11 @@ import { DataTablePaginationDemoComponent } from './data-table-pagination-demo/d
 import { DataTableExpandedDemoComponent } from './data-table-expanded-demo/data-table-expanded-demo.component';
 import { DataTableSynthesizeDemoComponent } from './data-table-synthesize-demo/data-table-synthesize-demo.component';
 import { DataTableTipsDemoComponent } from './data-table-tips-demo/data-table-tips-demo.component';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzGridModule } from 'ng-zorro-antd/grid';
 
 const routes: Routes = [
   { path: '', component: DataTableShowcaseComponent }
@@ -21,6 +29,14 @@ const routes: Routes = [
 @NgModule({
   imports: [
     SharedModule,
+    NzModalModule,
+    NzDropDownModule,
+    NzBreadCrumbModule,
+    NzToolTipModule,
+    NzButtonModule,
+    NzInputModule,
+    NzFormModule,
+    NzGridModule,
     RouterModule.forChild(routes)
   ],
   declarations: [DataTableShowcaseComponent, DataTableSimpleDemoComponent,

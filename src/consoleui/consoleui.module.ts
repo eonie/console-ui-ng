@@ -45,7 +45,7 @@ const CUI_MODULES = [
 })
 export class ConsoleuiModule {
 
-    static forRoot(options?: CuiRootConfig): ModuleWithProviders {
+    static forRoot(options?: CuiRootConfig): ModuleWithProviders<ConsoleuiModule> {
         return {
             ngModule: ConsoleuiModule,
             providers: [

@@ -577,7 +577,7 @@ export class CalendarComponent implements AfterViewInit, AfterViewChecked, OnIni
     }
 
     if (this.disabledDays) {
-      validDay = !this.isDayDisabled(day, month, year)
+      validDay = !this.isDayDisabled(day, month, year);
     }
 
     return validMin && validMax && validDate && validDay;

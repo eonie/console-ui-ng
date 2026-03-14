@@ -274,7 +274,7 @@ export class FileUploader {
   }
 
   public _acceptFilter(file: FileLikeObject): boolean {
-    console.log('_acceptFilter')
+    console.log('_acceptFilter');
     const acceptedFiles = this.options.accept;
     if (file && acceptedFiles) {
       const acceptedFilesArray = Array.isArray(acceptedFiles) ? acceptedFiles : acceptedFiles.split(',');

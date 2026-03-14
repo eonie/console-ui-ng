@@ -1,4 +1,4 @@
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { ConsoleuiModule } from 'consoleui';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -13,7 +13,7 @@ import { ShowcaseLayoutSiderComponent } from './showcase-layout-sider/showcase-l
     CommonModule,
     RouterModule,
     ConsoleuiModule,
-    NgZorroAntdModule,
+    NzMenuModule,
   ],
   declarations: [ShowcaseLayoutMainComponent, ShowcaseLayoutHeaderComponent, ShowcaseLayoutFooterComponent, ShowcaseLayoutSiderComponent],
   exports: [ShowcaseLayoutMainComponent]

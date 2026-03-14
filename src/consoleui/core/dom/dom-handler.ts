@@ -8,10 +8,11 @@ export class DomHandler {
     private calculatedScrollbarWidth: number = null;
 
     public addClass(element: any, className: string): void {
-        if (element.classList)
+        if (element.classList) {
             element.classList.add(className);
-        else
+        } else {
             element.className += ' ' + className;
+        }
     }
 
     public addMultipleClasses(element: any, className: string): void {
@@ -21,8 +22,7 @@ export class DomHandler {
                 element.classList.add(styles[i]);
             }
 
-        }
-        else {
+        } else {
             let styles: string[] = className.split(' ');
             for (let i = 0; i < styles.length; i++) {
                 element.className += ' ' + styles[i];
@@ -31,17 +31,19 @@ export class DomHandler {
     }
 
     public removeClass(element: any, className: string): void {
-        if (element.classList)
+        if (element.classList) {
             element.classList.remove(className);
-        else
+        } else {
             element.className = element.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+        }
     }
 
     public hasClass(element: any, className: string): boolean {
-        if (element.classList)
+        if (element.classList) {
             return element.classList.contains(className);
-        else
+        } else {
             return new RegExp('(^| )' + className + '( |$)', 'gi').test(element.className);
+        }
     }
 
     public siblings(element: any): any {
@@ -61,9 +63,9 @@ export class DomHandler {
     public index(element: any): number {
         let children = element.parentNode.childNodes;
         let num = 0;
-        for (var i = 0; i < children.length; i++) {
-            if (children[i] == element) return num;
-            if (children[i].nodeType == 1) num++;
+        for (let i = 0; i < children.length; i++) {
+            if (children[i] == element) { return num; }
+            if (children[i].nodeType == 1) { num++; }
         }
         return -1;
     }
@@ -82,16 +84,16 @@ export class DomHandler {
             if (targetOffset.top + top < 0) {
                 top = 0;
             }
-        }
-        else {
+        } else {
             top = targetHeight;
         }
 
 
-        if ((targetOffset.left + elementDimensions.width) > viewport.width)
+        if ((targetOffset.left + elementDimensions.width) > viewport.width) {
             left = targetWidth - elementDimensions.width;
-        else
+        } else {
             left = 0;
+        }
 
         element.style.top = top + 'px';
         element.style.left = left + 'px';
@@ -114,15 +116,15 @@ export class DomHandler {
             if (top < 0) {
                 top = 0 + windowScrollTop;
             }
-        }
-        else {
+        } else {
             top = targetOuterHeight + targetOffset.top + windowScrollTop;
         }
 
-        if (targetOffset.left + targetOuterWidth + elementOuterWidth > viewport.width)
+        if (targetOffset.left + targetOuterWidth + elementOuterWidth > viewport.width) {
             left = targetOffset.left + windowScrollLeft + targetOuterWidth - elementOuterWidth;
-        else
+        } else {
             left = targetOffset.left + windowScrollLeft;
+        }
 
         element.style.top = top + 'px';
         element.style.left = left + 'px';
@@ -174,8 +176,7 @@ export class DomHandler {
 
         if (offset < 0) {
             container.scrollTop = scroll + offset;
-        }
-        else if ((offset + itemHeight) > elementHeight) {
+        } else if ((offset + itemHeight) > elementHeight) {
             container.scrollTop = scroll + offset - elementHeight + itemHeight;
         }
     }
@@ -199,7 +200,7 @@ export class DomHandler {
     }
 
     public fadeOut(element, ms) {
-        var opacity = 1,
+        let opacity = 1,
             interval = 50,
             duration = ms,
             gap = interval / duration;
@@ -332,22 +333,22 @@ export class DomHandler {
     }
 
     isIE() {
-        var ua = window.navigator.userAgent;
+        let ua = window.navigator.userAgent;
 
-        var msie = ua.indexOf('MSIE ');
+        let msie = ua.indexOf('MSIE ');
         if (msie > 0) {
             // IE 10 or older => return version number
             return true;
         }
 
-        var trident = ua.indexOf('Trident/');
+        let trident = ua.indexOf('Trident/');
         if (trident > 0) {
             // IE 11 => return version number
-            var rv = ua.indexOf('rv:');
+            let rv = ua.indexOf('rv:');
             return true;
         }
 
-        var edge = ua.indexOf('Edge/');
+        let edge = ua.indexOf('Edge/');
         if (edge > 0) {
             // Edge (IE 12+) => return version number
             return true;
@@ -358,21 +359,23 @@ export class DomHandler {
     }
 
     appendChild(element: any, target: any) {
-        if (this.isElement(target))
+        if (this.isElement(target)) {
             target.appendChild(element);
-        else if (target.el && target.el.nativeElement)
+        } else if (target.el && target.el.nativeElement) {
             target.el.nativeElement.appendChild(element);
-        else
-            throw 'Cannot append ' + target + ' to ' + element;
+ } else {
+            throw new Error('Cannot append ' + target + ' to ' + element);
+ }
     }
 
     removeChild(element: any, target: any) {
-        if (this.isElement(target))
+        if (this.isElement(target)) {
             target.removeChild(element);
-        else if (target.el && target.el.nativeElement)
+        } else if (target.el && target.el.nativeElement) {
             target.el.nativeElement.removeChild(element);
-        else
-            throw 'Cannot remove ' + element + ' from ' + target;
+ } else {
+            throw new Error('Cannot remove ' + element + ' from ' + target);
+ }
     }
 
     isElement(obj: any) {
@@ -382,8 +385,9 @@ export class DomHandler {
     }
 
     calculateScrollbarWidth(): number {
-        if (this.calculatedScrollbarWidth !== null)
+        if (this.calculatedScrollbarWidth !== null) {
             return this.calculatedScrollbarWidth;
+        }
 
         let scrollDiv = document.createElement("div");
         scrollDiv.className = "ui-scrollbar-measure";

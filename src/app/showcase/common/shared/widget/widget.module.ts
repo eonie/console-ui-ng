@@ -1,4 +1,6 @@
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CodeBoxComponent } from './code-box/code-box.component';
@@ -16,7 +18,9 @@ const WIDGETS = [
 @NgModule({
   imports: [
     CommonModule,
-    NgZorroAntdModule,
+    NzToolTipModule,
+    NzIconModule,
+    NzTabsModule,
   ],
   declarations: [...WIDGETS],
   exports: [...WIDGETS]

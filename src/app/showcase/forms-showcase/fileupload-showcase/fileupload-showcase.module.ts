@@ -8,6 +8,7 @@ import { FileuploadMultipleDemoComponent } from './fileupload-multiple-demo/file
 import { FileuploadSingleDemoComponent } from './fileupload-single-demo/fileupload-single-demo.component';
 import { FileuploadCustomDemoComponent } from './fileupload-custom-demo/fileupload-custom-demo.component';
 import { FileuploadCoverDemoComponent } from './fileupload-cover-demo/fileupload-cover-demo.component';
+import { NzGridModule } from 'ng-zorro-antd/grid';
 
 const routes: Routes = [
   { path: '', component: FileuploadShowcaseComponent }
@@ -16,6 +17,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     SharedModule,
+    NzGridModule,
     RouterModule.forChild(routes),
   ],
   declarations: [
