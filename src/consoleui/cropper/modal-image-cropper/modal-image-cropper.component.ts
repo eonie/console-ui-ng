@@ -96,24 +96,31 @@ export class ModalImageCropperComponent {
     }
 
     read(files) {
-        return new Promise((resolve, reject) => {
+        return new Promise<string>((resolve, reject) => {
             if (!files || files.length === 0) {
-                resolve();
+                resolve('');
                 return;
             }
             const file = files[0];
-            if (/^image\/\w+$/.test(file.type)) {
+            // Strict image type whitelist for security
+            const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
+            if (validImageTypes.includes(file.type)) {
                 const reader = new FileReader();
-                reader.onerror = reject;
-                reader.onabort = reject;
-                reader.onload = (e) => {
-                    // debugger;
-                    console.log(e);
-                    this.imageUrl = reader.result;
+                reader.onerror = () => {
+                    reader.abort();
+                    reject(new Error(`Failed to read file: ${file.name || 'unknown'}`));
+                };
+                reader.onabort = () => {
+                    reject(new Error(`File reading aborted: ${file.name || 'unknown'}`));
+                };
+                reader.onload = () => {
+                    const result = reader.result as string;
+                    this.imageUrl = result;
+                    resolve(result);
                 };
                 reader.readAsDataURL(file);
             } else {
-                reject('Please choose an image file.');
+                reject(new Error(`Please choose a valid image file (JPEG, PNG, GIF, WebP, or SVG). Got: ${file.type || 'unknown type'} (${file.name || 'unknown'})`));
             }
         });
     }

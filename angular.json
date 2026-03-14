@@ -40,6 +40,16 @@
               "node_modules/popper.js/dist/umd/popper.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/asciidoctor.js/dist/asciidoctor.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "util",
+              "assert",
+              "buffer",
+              "events",
+              "process",
+              "stream",
+              "url",
+              "raw-loader"
             ]
           },
           "configurations": {
@@ -112,6 +122,16 @@
               "node_modules/popper.js/dist/umd/popper.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/asciidoctor.js/dist/asciidoctor.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "util",
+              "assert",
+              "buffer",
+              "events",
+              "process",
+              "stream",
+              "url",
+              "raw-loader"
             ]
           },
           "configurations": {
@@ -170,7 +190,17 @@
               "src/styles/styles.scss",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "util",
+              "assert",
+              "buffer",
+              "events",
+              "process",
+              "stream",
+              "url",
+              "raw-loader"
+            ]
           },
           "configurations": {
             "production": {

@@ -9,8 +9,8 @@ export class CkeditorShowcaseComponent implements OnInit {
 
   codes = {};
 
-  introDoc = require('!!raw-loader!./ckeditor-intro.adoc');
-  apiDoc = require('!!raw-loader!./ckeditor-api.adoc');
+  introDoc = require('!!raw-loader!./ckeditor-intro.adoc').default;
+  apiDoc = require('!!raw-loader!./ckeditor-api.adoc').default;
   constructor() {
     this.initCodes();
   }
@@ -27,15 +27,15 @@ export class CkeditorShowcaseComponent implements OnInit {
       this.codes[key] = [
         {
           file: `${demo}.component.ts`, language: 'typescript',
-          code: require(`!!raw-loader!./${demo}/${demo}.component.ts`)
+          code: require(`!!raw-loader!./${demo}/${demo}.component.ts`).default
         },
         {
           file: `${demo}.component.html`, language: 'html',
-          code: require(`!!raw-loader!./${demo}/${demo}.component.html`)
+          code: require(`!!raw-loader!./${demo}/${demo}.component.html`).default
         },
         {
           file: `${demo}.component.scss`, language: 'css',
-          code: require(`!!raw-loader!./${demo}/${demo}.component.scss`)
+          code: require(`!!raw-loader!./${demo}/${demo}.component.scss`).default
         }
       ];
     });

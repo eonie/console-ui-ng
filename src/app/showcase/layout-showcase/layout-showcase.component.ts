@@ -11,21 +11,21 @@ export class LayoutShowcaseComponent implements OnInit {
     basic: [
       {
         file: 'layout-basic-demo.component.ts', language: 'typescript',
-        code: require('!!raw-loader!./layout-basic-demo/layout-basic-demo.component.ts')
+        code: require('!!raw-loader!./layout-basic-demo/layout-basic-demo.component.ts').default
       },
       {
         file: 'layout-basic-demo.component.html', language: 'html',
-        code: require('!!raw-loader!./layout-basic-demo/layout-basic-demo.component.html')
+        code: require('!!raw-loader!./layout-basic-demo/layout-basic-demo.component.html').default
       },
       {
         file: 'layout-basic-demo.component.scss', language: 'css',
-        code: require('!!raw-loader!./layout-basic-demo/layout-basic-demo.component.scss')
+        code: require('!!raw-loader!./layout-basic-demo/layout-basic-demo.component.scss').default
       }
     ]
   };
 
-  introDoc = require('!!raw-loader!./layout-intro.adoc');
-  apiDoc = require('!!raw-loader!./layout-api.adoc');
+  introDoc = require('!!raw-loader!./layout-intro.adoc').default;
+  apiDoc = require('!!raw-loader!./layout-api.adoc').default;
 
   constructor() { }
 

@@ -9,8 +9,8 @@ export class TreeShowcaseComponent implements OnInit {
 
   codes = {};
 
-  introDoc = require('!!raw-loader!./tree-intro.adoc');
-  apiDoc = require('!!raw-loader!./tree-api.adoc');
+  introDoc = require('!!raw-loader!./tree-intro.adoc').default;
+  apiDoc = require('!!raw-loader!./tree-api.adoc').default;
 
   constructor() {
     this.initCodes();
@@ -27,15 +27,15 @@ export class TreeShowcaseComponent implements OnInit {
       this.codes[key] = [
         {
           file: `${demo}.component.ts`, language: 'typescript',
-          code: require(`!!raw-loader!./${demo}/${demo}.component.ts`)
+          code: require(`!!raw-loader!./${demo}/${demo}.component.ts`).default
         },
         {
           file: `${demo}.component.html`, language: 'html',
-          code: require(`!!raw-loader!./${demo}/${demo}.component.html`)
+          code: require(`!!raw-loader!./${demo}/${demo}.component.html`).default
         },
         {
           file: `${demo}.component.scss`, language: 'css',
-          code: require(`!!raw-loader!./${demo}/${demo}.component.scss`)
+          code: require(`!!raw-loader!./${demo}/${demo}.component.scss`).default
         }
       ];
     });

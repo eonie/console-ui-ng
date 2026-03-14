@@ -73,38 +73,53 @@ export class ImageCropperComponent {
     if (this.cropper) {
       this.cropper.destroy();
     }
-    // debugger;
-    image.addEventListener('ready', () => {
+    // Use one-time event listener to prevent memory leaks
+    const onReady = () => {
       this.ready.emit(true);
       this.isLoading = false;
       if (this.cropbox) {
         this.cropper.setCropBoxData(this.cropbox);
       }
-    });
+      // Remove listener after first invocation
+      image.removeEventListener('ready', onReady);
+    };
+    image.addEventListener('ready', onReady);
     this.cropper = new Cropper(image, this.cropperOption());
     this.origin.emit(this.cropper);
   }
 
   read(files) {
-    return new Promise((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
       if (!files || files.length === 0) {
-        resolve();
+        resolve('');
         return;
       }
       const file = files[0];
-      if (/^image\/\w+$/.test(file.type)) {
+      if (!file) {
+        resolve('');
+        return;
+      }
+      // Strict image type whitelist for security
+      const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
+      if (validImageTypes.includes(file.type)) {
         const reader = new FileReader();
-        reader.onerror = reject;
-        reader.onabort = reject;
-        reader.onload = (e) => {
-          console.log(e);
-          this.imageUrl = reader.result;
-          // this.isLoading = true;
+        reader.onerror = () => {
+          reader.abort();
+          reject(new Error(`Failed to read file: ${file.name || 'unknown'}`));
+        };
+        reader.onabort = () => {
+          reject(new Error(`File reading aborted: ${file.name || 'unknown'}`));
+        };
+        reader.onload = () => {
+          // reader.result is string | ArrayBuffer | null when using readAsDataURL
+          const result = reader.result as string;
+          this.imageUrl = result;
           this.loadError = false;
+          resolve(result);
         };
         reader.readAsDataURL(file);
       } else {
-        reject('Please choose an image file.');
+        reject(new Error(`Please choose a valid image file (JPEG, PNG, GIF, WebP, or SVG). Got: ${file.type || 'unknown type'} (${file.name || 'unknown'})`));
       }
     });
   }

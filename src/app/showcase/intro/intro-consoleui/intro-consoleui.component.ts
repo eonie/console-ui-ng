@@ -12,9 +12,9 @@ export class IntroConsoleuiComponent implements OnInit {
   content: string;
 
   intros = {
-    consoleui: require('!!raw-loader!./intro-consoleui.adoc'),
-    'getting-started': require('!!raw-loader!./getting-started.adoc'),
-    'changelog': require('!!raw-loader!./changelog.adoc'),
+    consoleui: require('!!raw-loader!./intro-consoleui.adoc').default,
+    'getting-started': require('!!raw-loader!./getting-started.adoc').default,
+    'changelog': require('!!raw-loader!./changelog.adoc').default,
   };
 
   constructor(private router: Router, private route: ActivatedRoute) { }
