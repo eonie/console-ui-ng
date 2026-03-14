@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { CuiPagination, Column } from 'consoleui';
 import { Component, OnInit } from '@angular/core';
 
@@ -100,12 +100,12 @@ export class DataTableSynthesizeDemoComponent implements OnInit {
     { title: '操作', tpl: 'actions', styleClass: 'text-right' },
   ];
 
-  _searchForm: FormGroup;
+  _searchForm: UntypedFormGroup;
   _isComplexSearch: boolean = false;
   isVisible: boolean = false;
   inputValue: any;
 
-  constructor(private fb: FormBuilder, private planApi: PlanApiService, private _message: NzMessageService) { }
+  constructor(private fb: UntypedFormBuilder, private planApi: PlanApiService, private _message: NzMessageService) { }
 
   ngOnInit() {
     this.initSearchForm();

@@ -271,7 +271,6 @@
       }
     }
   },
-  "defaultProject": "console-ui-ng",
   "cli": {
     "analytics": false
   }

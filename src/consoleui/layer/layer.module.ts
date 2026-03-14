@@ -11,18 +11,17 @@ import { MsgComponent } from './msg/msg.component';
 import { LayerComponent } from './layer/layer.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    OverlayModule,
-    PortalModule,
-  ],
-  declarations: [LayerContainer, CuiLayerTitle, CuiLayerContent, CuiLayerActions, CuiLayerClose,
-    ConfirmComponent, AlertComponent, MsgComponent, LayerComponent],
-  exports: [LayerContainer, CuiLayerTitle, CuiLayerContent, CuiLayerActions, CuiLayerClose,
-    ConfirmComponent, AlertComponent, MsgComponent, LayerComponent],
-  providers: [
-    CuiLayer
-  ],
-  entryComponents: [LayerContainer, ConfirmComponent, AlertComponent, MsgComponent]
+    imports: [
+        CommonModule,
+        OverlayModule,
+        PortalModule,
+    ],
+    declarations: [LayerContainer, CuiLayerTitle, CuiLayerContent, CuiLayerActions, CuiLayerClose,
+        ConfirmComponent, AlertComponent, MsgComponent, LayerComponent],
+    exports: [LayerContainer, CuiLayerTitle, CuiLayerContent, CuiLayerActions, CuiLayerClose,
+        ConfirmComponent, AlertComponent, MsgComponent, LayerComponent],
+    providers: [
+        CuiLayer
+    ]
 })
 export class CuiLayerModule { }
