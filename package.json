@@ -1,6 +1,6 @@
 {
   "name": "console-ui-ng",
-  "version": "14.0.0",
+  "version": "15.0.0",
   "license": "MIT",
   "description": "An enterprise-class UI components based on Ant Design and Angular",
   "scripts": {
@@ -28,15 +28,15 @@
   },
   "dependencies": {
     "@angular-devkit/schematics": "^21.2.2",
-    "@angular/animations": "^14.3.0",
-    "@angular/common": "^14.3.0",
-    "@angular/compiler": "^14.3.0",
-    "@angular/core": "^14.3.0",
-    "@angular/forms": "^14.3.0",
-    "@angular/platform-browser": "^14.3.0",
-    "@angular/platform-browser-dynamic": "^14.3.0",
-    "@angular/platform-server": "^14.3.0",
-    "@angular/router": "^14.3.0",
+    "@angular/animations": "^15.2.10",
+    "@angular/common": "^15.2.10",
+    "@angular/compiler": "^15.2.10",
+    "@angular/core": "^15.2.10",
+    "@angular/forms": "^15.2.10",
+    "@angular/platform-browser": "^15.2.10",
+    "@angular/platform-browser-dynamic": "^15.2.10",
+    "@angular/platform-server": "^15.2.10",
+    "@angular/router": "^15.2.10",
     "asciidoctor.js": "^1.5.6-preview.4",
     "bootstrap": "^4.0.0",
     "classlist.js": "^1.1.20150312",
@@ -48,7 +48,7 @@
     "jquery": "^1.12.4",
     "marked": "^0.3.6",
     "mockjs": "^1.0.1-beta3",
-    "ng-zorro-antd": "~14.3.0",
+    "ng-zorro-antd": "~15.1.0",
     "object-path": "^0.11.4",
     "popper.js": "^1.12.6",
     "raw-loader": "^4.0.2",
@@ -57,10 +57,10 @@
     "zone.js": "~0.11.8"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.2.13",
-    "@angular/cli": "14.2.13",
-    "@angular/compiler-cli": "^14.3.0",
-    "@angular/language-service": "^14.3.0",
+    "@angular-devkit/build-angular": "^15.2.11",
+    "@angular/cli": "15.2.11",
+    "@angular/compiler-cli": "^15.2.10",
+    "@angular/language-service": "^15.2.10",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^12.11.1",
@@ -83,6 +83,6 @@
     "sass": "^1.32.0",
     "ts-node": "~3.2.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.6.4"
+    "typescript": "~4.9.5"
   }
 }
