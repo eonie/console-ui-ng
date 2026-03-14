@@ -1,8 +1,7 @@
 import {NgZone} from '@angular/core';
 import { PortalHost, Portal } from '../portal/portal';
 
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
+import {Observable, Subject} from 'rxjs';
 import { GlobalPostionStrategy } from './position/global-position-strategy';
 import { PositionStrategy } from './position/position-strategy';
 import { OverlayConfig } from './overlay-config';

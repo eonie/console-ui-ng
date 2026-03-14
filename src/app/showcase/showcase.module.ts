@@ -14,7 +14,7 @@ import { ConsoleuiModule } from 'consoleui';
     BrowserModule,
     HttpModule,
     BrowserAnimationsModule,
-    NgZorroAntdModule.forRoot(),
+    NgZorroAntdModule,
     SharedModule,
     ShowcaseRoutingModule,
     ConsoleuiModule.forRoot({dataTable: {showSerialNumber: false}})

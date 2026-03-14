@@ -1,9 +1,9 @@
 import { CuiTreeNode } from 'consoleui';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Observable, of } from 'rxjs';
+
+
 
 const nodes = [
     { "id": "1", "label": "Node1" },
@@ -38,6 +38,6 @@ export class TreeDataApiMockService {
     constructor() { }
 
     getNodes(): Observable<CuiTreeNode[]> {
-        return Observable.of(nodes);
+        return of(nodes);
     }
 }

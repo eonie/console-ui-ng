@@ -1,20 +1,19 @@
+import { HttpClientModule } from '@angular/common/http';
 import { defaultImage } from './default-image-code';
-import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
 import { Directive, Input, OnInit, ElementRef, HostListener } from '@angular/core';
 
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
+
+
+
+
+
 
 @Directive({ selector: 'img[cui-lazy-load]' })
 export class ImageLazyLoadDirective implements OnInit {
     // @Input() src: string;
 
-    constructor(private el: ElementRef, private http: Http) { }
+    constructor(private el: ElementRef, private http: HttpClientModule) { }
 
     ngOnInit() {
         // this.checkValid().subscribe(

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TreeDataApiMockService } from '../../data-showcase/tree-showcase/tree-data-api-mock.service';
 import { CuiTreeNode } from 'consoleui';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'cui-tree-select-showcase',
@@ -21,7 +21,7 @@ export class TreeSelectShowcaseComponent implements OnInit {
         enable: true,
         loadChildren: (node: CuiTreeNode): Observable<any> => {
           if (!node.data.virtual) {
-            return Observable.of(null);
+            return of(null);
           }
           return this.treeDataApi.getNodes();
         }

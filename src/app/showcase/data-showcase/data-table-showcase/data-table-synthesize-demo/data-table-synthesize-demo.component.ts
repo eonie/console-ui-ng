@@ -3,9 +3,9 @@ import { CuiPagination, Column } from 'consoleui';
 import { Component, OnInit } from '@angular/core';
 
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Observable, of } from 'rxjs';
+
+
 import { NzMessageService } from 'ng-zorro-antd';
 
 class Pagination<T> implements CuiPagination {
@@ -73,7 +73,7 @@ export class PlanApiService {
       sort: '', totalElements: 115, totalPages: 12, content: list
     };
 
-    return Observable.of(data);
+    return of(data);
   }
 
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
+
 
 @Injectable()
 export class DataTableApiMockService {
@@ -31,13 +32,13 @@ export class DataTableApiMockService {
     getPrev(x): Observable<any[]> {
         let prevTen = this.users.slice(0, x);
 
-        return Observable.of(prevTen);
+        return of(prevTen);
     }
 
     getPrevTen(): Observable<any[]> {
         let prevTen = this.users.slice(0, 10);
 
-        return Observable.of(prevTen);
+        return of(prevTen);
     }
 
     getPage(params): Observable<any> {
@@ -46,7 +47,7 @@ export class DataTableApiMockService {
 
         let data = { total: 30, page: page, size: 10, content: list };
 
-        return Observable.of(data);
+        return of(data);
     }
 
     getPageDelay(params): Observable<any> {
@@ -55,13 +56,13 @@ export class DataTableApiMockService {
 
         let data = { total: 30, page: page, size: 10, content: list };
 
-        return Observable.of(data).delay(3000);
+        return of(data).pipe(delay(3000));
     }
 
     getOne(id): Observable<any> {
         let u = this.users.find(it => it.id == id);
 
-        return Observable.of(u);
+        return of(u);
     }
 
 }

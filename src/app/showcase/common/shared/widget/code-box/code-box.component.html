@@ -30,7 +30,9 @@
     <div class="hightlight">
       <div class="code-box-actions">
         <nz-tooltip [nzTitle]="'复制代码'">
-          <i nz-tooltip class="anticon code-box-code-copy" [class.anticon-copy]="!_copied" [class.anticon-check]="_copied" [class.ant-tooltip-open]="_copied" (click)="copyCode(codeItem.code)"></i>
+          <i nz-tooltip *ngIf="!_copied" nz-icon type="copy"  (click)="copyCode(codeItem.code)"></i>
+          <i nz-tooltip *ngIf="_copied" nz-icon type="check"  ></i>
+          <i nz-icon nzType="copy" nzTheme="outline"></i>
         </nz-tooltip>
       </div>
 

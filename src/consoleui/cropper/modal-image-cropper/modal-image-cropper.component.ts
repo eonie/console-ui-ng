@@ -29,18 +29,18 @@ export class ModalImageCropperComponent {
     constructor(private modalService: NzModalService, private http: Http) { }
 
     showModalForTemplate(contentTpl, footerTpl) {
-        this.currentModal = this.modalService.open({
-            title: this.title,
-            content: contentTpl,
-            footer: footerTpl,
-            width: this.modalWidth,
-            wrapClassName: 'vertical-center-modal',
-            onOk() {
+        this.currentModal = this.modalService.create({
+            nzTitle: this.title,
+            nzContent: contentTpl,
+            nzFooter: footerTpl,
+            nzWidth: this.modalWidth,
+            nzWrapClassName: 'vertical-center-modal',
+            nzOnOk() {
             },
-            onCancel() {
+            nzOnCancel() {
                 console.log('Click cancel');
             },
-            maskClosable: false
+            nzMaskClosable: false
         });
         console.log(this.currentModal);
     }

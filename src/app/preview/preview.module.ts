@@ -10,7 +10,7 @@ import { PreviewComponent } from './preview.component';
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
-    NgZorroAntdModule.forRoot(),
+    NgZorroAntdModule,
   ],
   declarations: [PreviewComponent],
   bootstrap: [PreviewComponent]
