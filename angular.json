@@ -241,5 +241,8 @@
       }
     }
   },
-  "defaultProject": "console-ui-ng"
+  "defaultProject": "console-ui-ng",
+  "cli": {
+    "analytics": false
+  }
 }

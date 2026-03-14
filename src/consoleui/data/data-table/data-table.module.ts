@@ -7,7 +7,7 @@ import { CuiCoreModule } from '../../core/core.module';
 import { DataTableComponent } from './data-table.component';
 import { PaginationModule } from '../pagination/pagination.module';
 import { ColTplDirective } from './col-tpl.directive';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
     CuiCoreModule,
     CuiFormsModule,
     PaginationModule,
-    NgZorroAntdModule,
+    NzCheckboxModule,
   ],
   declarations: [DataTableComponent, ColTplDirective],
   exports: [DataTableComponent, ColTplDirective]

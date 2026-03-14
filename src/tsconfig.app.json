@@ -12,6 +12,12 @@
   },
   "exclude": [
     "test.ts",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "main.ts",
+    "main-preview.ts",
+    "app/app.module.ts",
+    "app/app.component.ts",
+    "app/app-routing.module.ts",
+    "app/preview/**"
   ]
 }

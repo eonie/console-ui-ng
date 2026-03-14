@@ -16,20 +16,20 @@
 </div>
 <cui-data-table [columns]="columns" [data]="data">
     <ng-template cuiColTpl="name" let-row="row">
-        <a nz-tooltip [nzPlacement]="'right'" [nzTitle]="nameTpl">{{row.name}}</a>
+        <a nz-tooltip nzTooltipPlacement="right" [nzTooltipTitle]="nameTpl">{{row.name}}</a>
         <ng-template #nameTpl>
             <p>{{row.name}}</p>
         </ng-template>
     </ng-template>
     <ng-template cuiColTpl="budget" let-row="row">
-        <a nz-tooltip [nzPlacement]="'right'" [nzTitle]="budgetTpl">{{row.budget}}</a>
+        <a nz-tooltip nzTooltipPlacement="right" [nzTooltipTitle]="budgetTpl">{{row.budget}}</a>
         <ng-template #budgetTpl>
             <p>培训机动预算：{{row.budget}}</p>
             <p>研发预算：{{row.budget}}</p>
         </ng-template>
     </ng-template>
     <ng-template cuiColTpl="address" let-row="row">
-        <a nz-tooltip [nzPlacement]="'right'" [nzTitle]="addressTpl">{{row.address}}</a>
+        <a nz-tooltip nzTooltipPlacement="right" [nzTooltipTitle]="addressTpl">{{row.address}}</a>
         <ng-template #addressTpl>
             <p>旧地址：{{row.address}}</p>
             <p>新地址：{{row.address}}</p>
