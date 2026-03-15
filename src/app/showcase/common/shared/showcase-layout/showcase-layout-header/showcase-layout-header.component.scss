@@ -1,0 +1,23 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  .logo {
+    width: 200px;
+    a {
+      font-size: 18px;
+      font-weight: bold;
+      color: inherit;
+    }
+  }
+
+  ul[nz-menu] {
+    flex: 1;
+    line-height: 64px;
+  }
+
+  .search-box {
+    width: 200px;
+  }
+}

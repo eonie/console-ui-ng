@@ -1,4 +1,7 @@
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ConsoleuiModule } from 'consoleui';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -14,6 +17,9 @@ import { ShowcaseLayoutSiderComponent } from './showcase-layout-sider/showcase-l
     RouterModule,
     ConsoleuiModule,
     NzMenuModule,
+    NzLayoutModule,
+    NzInputModule,
+    NzIconModule,
   ],
   declarations: [ShowcaseLayoutMainComponent, ShowcaseLayoutHeaderComponent, ShowcaseLayoutFooterComponent, ShowcaseLayoutSiderComponent],
   exports: [ShowcaseLayoutMainComponent]

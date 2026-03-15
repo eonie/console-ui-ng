@@ -54,7 +54,7 @@ import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzResultModule } from 'ng-zorro-antd/result';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
-import { CopyOutline, CheckOutline } from '@ant-design/icons-angular/icons';
+import { CopyOutline, CheckOutline, SearchOutline, DownOutline } from '@ant-design/icons-angular/icons';
 
 import { SharedModule } from './common/shared/shared.module';
 import { ShowcaseRoutingModule } from './showcase-routing.module';
@@ -62,7 +62,7 @@ import { ShowcaseComponent } from './showcase.component';
 import { ConsoleuiModule } from 'consoleui';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 
-const icons = [CopyOutline, CheckOutline];
+const icons = [CopyOutline, CheckOutline, SearchOutline, DownOutline];
 
 @NgModule({
   imports: [
