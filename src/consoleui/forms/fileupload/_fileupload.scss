@@ -40,7 +40,8 @@
     .file-item {
         padding: 0.75rem;
 
-        i.fa-file-* {
+        i[class^="fa-file-"],
+        i[class*=" fa-file-"] {
             font-size: 1.25rem;
         }
     }

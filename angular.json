@@ -75,11 +75,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "showcase:build"
+            "buildTarget": "showcase:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "showcase:build:production"
+              "buildTarget": "showcase:build:production"
             }
           }
         }
@@ -157,11 +157,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "console-ui-ng-preview:build"
+            "buildTarget": "console-ui-ng-preview:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "console-ui-ng-preview:build:production"
+              "buildTarget": "console-ui-ng-preview:build:production"
             }
           }
         }
@@ -225,18 +225,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "console-ui-ng:build"
+            "buildTarget": "console-ui-ng:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "console-ui-ng:build:production"
+              "buildTarget": "console-ui-ng:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "console-ui-ng:build"
+            "buildTarget": "console-ui-ng:build"
           }
         },
         "test": {
